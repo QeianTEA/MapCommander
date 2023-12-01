@@ -278,7 +278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 10d51d01a69c9d94c8b8e99d03530062, type: 3}
       propertyPath: m_Name
-      value: Ground
+      value: Models
       objectReference: {fileID: 0}
     - target: {fileID: 8416272007918961125, guid: 10d51d01a69c9d94c8b8e99d03530062, type: 3}
       propertyPath: m_Name
@@ -465,6 +465,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 76999c8d18ddf2c4897a6fa58818349a, type: 3}
   - {fileID: 8300000, guid: 53916b452b72b5b48bae7ea3e97b73d8, type: 3}
   - {fileID: 8300000, guid: 64fc6ab51bb68cf49a9843be9643e170, type: 3}
+  clickon: {fileID: 8300000, guid: b197c019f8221754eb4d5b1e02c212dc, type: 3}
+  radioStatic:
+  - {fileID: 8300000, guid: 63a6206bda3cb85488cb1b4fbdc97f1c, type: 3}
+  - {fileID: 8300000, guid: 72cfa2cb39a751c4cb2fea273574329a, type: 3}
+  - {fileID: 8300000, guid: 11c46ddb8c2c4764799a90bc204e12d4, type: 3}
+  - {fileID: 8300000, guid: ef4993fb29a695b49bc4882e44a1d45d, type: 3}
 --- !u!114 &481493888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,9 +511,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.15
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -549,7 +555,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0

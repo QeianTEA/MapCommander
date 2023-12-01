@@ -11,6 +11,10 @@ public class RadioScript : MonoBehaviour , IAction
 
     [SerializeField]
     private AudioClip[] songsToPlay;
+    [SerializeField]
+    private AudioClip clickon;
+    [SerializeField]
+    private AudioClip[] radioStatic;
 
     private int n;
 
@@ -27,17 +31,38 @@ public class RadioScript : MonoBehaviour , IAction
 
         if (activated)
         {
-            n++;
-            if (n == songsToPlay.Length)
-                n = 0;
-
-            radio.clip = songsToPlay[n];
-
-            radio.Play();
+            StartCoroutine(RadioPlay());
         }
         else
         {
-            radio.Stop();
+            radio.clip = clickon;
+            radio.loop = false;
+            radio.Play();
         }
+    }
+
+    IEnumerator RadioPlay()
+    {
+        radio.clip = clickon;
+        radio.Play();
+
+        yield return new WaitForSeconds(0.02f);
+
+        int m = Random.Range(0, radioStatic.Length);
+        radio.clip = radioStatic[m];
+        radio.Play();
+
+
+        float b  = Random.Range(0.1f, 1f);
+        yield return new WaitForSeconds(b);
+
+        n++;
+        if (n == songsToPlay.Length)
+            n = 0;
+
+        radio.clip = songsToPlay[n];
+
+        radio.loop = true;
+        radio.Play();
     }
 }
