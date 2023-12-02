@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class InteractionReceiver : MonoBehaviour
 {
+    public bool isItem;
+
+
     [SerializeField]
     private string interactMessage;
 
@@ -16,7 +19,8 @@ public class InteractionReceiver : MonoBehaviour
     public void Activate()
     {
         
-        foreach (GameObject o in objectsWithActions) {
+        foreach (GameObject o in objectsWithActions)
+        {
             o.GetComponent<IAction>().Activate();
         }
 
@@ -24,6 +28,9 @@ public class InteractionReceiver : MonoBehaviour
 
     public string GetInteractionMessage()
     {
-        return interactMessage;
+        if (isItem && PlayerScript.handsFull)
+            return "Hands full";
+        else
+            return interactMessage;
     }
 }

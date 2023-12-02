@@ -14,7 +14,7 @@ public class CheckInteraction : MonoBehaviour
 
     private Ray ray;
 
-    private bool canInteract;
+    public static bool canInteract;
 
     private InteractionReceiver currentReceiver;
 
@@ -32,7 +32,6 @@ public class CheckInteraction : MonoBehaviour
         {
             /*
              *In this region the character is seeing an object with which he can interact
-             *In my case I'll do the E-key reading right here
             */
 
 
