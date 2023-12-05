@@ -26,6 +26,7 @@ public class PaperScript : MonoBehaviour , IAction
                 GetComponent<BoxCollider>().enabled = false;
                 GetComponent<InteractionReceiver>().enabled = false;
                 PlayerScript.handsFull = true;
+                Player.GetComponent<PlayerScript>().carriedItem = gameObject;
 
                 transform.parent = Player.transform;   //Player becomes items parent
                 transform.localPosition = new Vector3(0.23f, 0.1f, 0.7f);
