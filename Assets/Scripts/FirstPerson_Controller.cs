@@ -19,7 +19,7 @@ public class FirstPerson_Controller : MonoBehaviour
     float rotationX = 0;
 
     [HideInInspector]
-    public bool canMove = true;
+    public static bool canMove = true;
 
     void Start()
     {
