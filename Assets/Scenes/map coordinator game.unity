@@ -123,6 +123,81 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &27019108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 27019109}
+  - component: {fileID: 27019111}
+  m_Layer: 0
+  m_Name: mapCamera
+  m_TagString: MapCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &27019109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27019108}
+  m_LocalRotation: {x: 0.39267567, y: -0.5880526, z: 0.39267567, w: 0.5880526}
+  m_LocalPosition: {x: -2.55, y: 3.55, z: -2.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 112.53299, y: 90, z: 180}
+--- !u!20 &27019111
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27019108}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1 &84380355
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +343,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1461304994638716399, guid: 10d51d01a69c9d94c8b8e99d03530062, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab3327ad4ab99764fb506de98d6d9a1d, type: 2}
     - target: {fileID: -516098083770646512, guid: 10d51d01a69c9d94c8b8e99d03530062, type: 3}
       propertyPath: m_Name
       value: map
@@ -463,13 +542,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177873228}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.06, y: 2.29, z: -2.42}
+  m_LocalPosition: {x: -1.06, y: 2.29, z: -2.606}
   m_LocalScale: {x: 1.4129918, y: 1.972035, z: 1.4975809}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1971915512}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &177873235
 MonoBehaviour:
@@ -528,7 +607,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &220170236
 MonoBehaviour:
@@ -542,6 +621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5a0609d46011d845a8ce6d025d66546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapCam: {fileID: 27019108}
 --- !u!1 &481493883 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8416272007918961125, guid: 10d51d01a69c9d94c8b8e99d03530062, type: 3}
@@ -871,7 +951,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 850625004229845666, guid: 7498eacbab0d23a45b60a83383b2ce1a, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 850625004229845666, guid: 7498eacbab0d23a45b60a83383b2ce1a, type: 3}
       propertyPath: m_LocalScale.y
@@ -1214,7 +1294,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971915509}
   m_LocalRotation: {x: 0.36423352, y: -0, z: -0, w: 0.9313077}
-  m_LocalPosition: {x: 0, y: 0.62, z: 0.524}
+  m_LocalPosition: {x: 0, y: 0.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1365,7 +1445,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 850625004229845666, guid: 7498eacbab0d23a45b60a83383b2ce1a, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 850625004229845666, guid: 7498eacbab0d23a45b60a83383b2ce1a, type: 3}
       propertyPath: m_LocalPosition.x

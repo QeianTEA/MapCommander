@@ -8,24 +8,37 @@ public class MapScript : MonoBehaviour, IAction
 
     private GameObject Player;
     private GameObject pov;
+    private GameObject mapCam;
 
 
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        mapCam = GameObject.FindGameObjectWithTag("MapCamera");
         pov = GameObject.FindGameObjectWithTag("MainCamera");
+
+        mapCam.SetActive(false);
     }
+
 
 
     void Update()
     {
      if (activated)
         {
+            mapCam.SetActive(true);
+            pov.SetActive(false);
+
+            float step = 10f * Time.deltaTime;
             //the player "sits"
-            Player.transform.position = Vector3.MoveTowards(Player.transform.position, new Vector3(-1.06f, 2.29f, -2.606f), 0.001f);
+            if(Vector3.Distance(Player.transform.position, new Vector3(-1.06f, 2.29f, -2.606f)) > 0.11f)
+                Player.transform.position = Vector3.MoveTowards(Player.transform.position, new Vector3(- 1.06f, 2.29f, -2.606f), step);
+            Player.transform.rotation = new Quaternion(0f, -0.707106829f, 0f, 0.707106829f);
             //camera moves
-            pov.transform.position = Vector3.MoveTowards(pov.transform.position, new Vector3(0, 0.62f, 0.954f), 0.01f);
-            pov.transform.rotation = Quaternion.RotateTowards(new Quaternion(pov.transform.rotation.x, pov.transform.rotation.y, pov.transform.rotation.z, pov.transform.rotation.w), new Quaternion(64.816f, 0f, 0f, pov.transform.rotation.w), 0.01f);
+            if (Vector3.Distance(pov.transform.position, new Vector3(-2.55f, 3.55f, -2.6f)) > 0.11f)
+                mapCam.transform.position = Vector3.Lerp(mapCam.transform.position, new Vector3(-2.55f, 3.55f, -2.6f), step);
+            else
+                step = 0;
         }
     }
 
@@ -33,8 +46,13 @@ public class MapScript : MonoBehaviour, IAction
     {
         if (!GameManager.lookingAtMap)
         {
-            gameObject.GetComponent<BoxCollider>().enabled = true;
             activated = false;
+
+            //camera normal position
+            pov.SetActive(true);
+            mapCam.SetActive(false);
+
+            gameObject.GetComponent<BoxCollider>().enabled = true;
             FirstPerson_Controller.canMove = true;
         }
 
@@ -45,10 +63,11 @@ public class MapScript : MonoBehaviour, IAction
     {
         activated = true;
 
+        mapCam.transform.position = pov.transform.position;
         GameManager.lookingAtMap = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         FirstPerson_Controller.canMove = false;
         gameObject.GetComponent<BoxCollider>().enabled = false;
-
-
     }
 }
