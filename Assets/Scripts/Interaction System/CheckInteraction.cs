@@ -35,7 +35,7 @@ public class CheckInteraction : MonoBehaviour
             */
 
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && currentReceiver != null)
             {
                 currentReceiver.Activate();
             }
@@ -49,33 +49,43 @@ public class CheckInteraction : MonoBehaviour
         ray = new Ray(rayOrigin.transform.position, rayOrigin.transform.forward);
 
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-        {
-           
 
-            if (hit.distance < minInteractionDistance)
+        if (PlayerScript.handsFull)
+        {
+            canInteract = false;
+        }
+        else
+        {
+            if (Physics.Raycast(ray, out hit))
             {
 
 
-                currentReceiver = hit.transform.gameObject.GetComponent<InteractionReceiver>();
-
-                if (currentReceiver != null)
+                if (hit.distance < minInteractionDistance)
                 {
-                    //Here you can make something with the interact message
 
-                    ui.showMessage(currentReceiver.GetInteractionMessage());
- 
-                    canInteract = true;
-                   
+
+                    currentReceiver = hit.transform.gameObject.GetComponent<InteractionReceiver>();
+
+                    if (currentReceiver != null)
+                    {
+                        //Here you can make something with the interact message
+
+                        ui.showMessage(currentReceiver.GetInteractionMessage());
+
+                        canInteract = true;
+
+                    }
+
                 }
-                else
-                {
-                    canInteract = false;
-                }
+            }
+            else if (currentReceiver == null)
+            {
+                canInteract = false;
             }
         }
 
-      
+
+
     }
 
 }
